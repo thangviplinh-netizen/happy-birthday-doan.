@@ -1,360 +1,611 @@
 <!DOCTYPE html>
 <html lang="vi">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Happy Birthday Đoàn 🎂</title>
 
-  <!-- FONT -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0"/>
 
-  <!-- FIREWORK -->
-  <script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
+<title>Happy Birthday Đoàn 💙</title>
 
-  <style>
-    *{
-      margin:0;
-      padding:0;
-      box-sizing:border-box;
-    }
+<!-- FONT -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-    body{
-      overflow:hidden;
-      font-family:'Poppins',sans-serif;
-      background: linear-gradient(135deg,#0b3d91,#1e90ff,#6ec6ff);
-      height:100vh;
-      color:white;
-      position:relative;
-    }
+<!-- PHÁO HOA -->
+<script src="https://cdn.jsdelivr.net/npm/canvas-confetti@1.9.2/dist/confetti.browser.min.js"></script>
 
-    .bg-deco{
-      position:absolute;
-      width:100%;
-      height:100%;
-      overflow:hidden;
-      z-index:0;
-    }
+<style>
 
-    .floating{
-      position:absolute;
-      font-size:40px;
-      animation: float 6s infinite ease-in-out;
-      opacity:0.9;
-    }
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+  -webkit-tap-highlight-color: transparent;
+}
 
-    @keyframes float{
-      0%{transform:translateY(0px) rotate(0deg);}
-      50%{transform:translateY(-20px) rotate(10deg);}
-      100%{transform:translateY(0px) rotate(0deg);}
-    }
+body{
 
-    .container{
-      position:relative;
-      z-index:2;
-      width:100%;
-      height:100vh;
-      display:flex;
-      justify-content:center;
-      align-items:center;
-      padding:20px;
-    }
+  width:100%;
+  height:100vh;
+  overflow:hidden;
 
-    .card{
-      width:90%;
-      max-width:800px;
-      min-height:450px;
-      background:rgba(255,255,255,0.15);
-      backdrop-filter: blur(12px);
-      border:2px solid rgba(255,255,255,0.2);
-      border-radius:30px;
-      padding:40px;
-      text-align:center;
-      box-shadow:0 10px 40px rgba(0,0,0,0.25);
-      display:none;
-      animation:fadeIn 0.7s ease;
-      position:relative;
-      overflow:hidden;
-    }
+  font-family:'Poppins',sans-serif;
 
-    .card.active{
-      display:block;
-    }
+  background:
+  radial-gradient(circle at top left,#4cc9f0,#4361ee,#0b3d91);
 
-    @keyframes fadeIn{
-      from{
-        opacity:0;
-        transform:scale(0.9);
-      }
-      to{
-        opacity:1;
-        transform:scale(1);
-      }
-    }
+  color:white;
 
-    h1{
-      font-family:'Pacifico',cursive;
-      font-size:52px;
-      margin-bottom:30px;
-      text-shadow:0 0 15px rgba(255,255,255,0.6);
-    }
+  display:flex;
+  justify-content:center;
+  align-items:center;
 
-    p{
-      font-size:28px;
-      line-height:1.7;
-      font-weight:600;
-    }
+  position:relative;
+}
 
-    .btn{
-      margin-top:40px;
-      padding:16px 38px;
-      border:none;
-      border-radius:50px;
-      background:white;
-      color:#0b3d91;
-      font-size:20px;
-      font-weight:700;
-      cursor:pointer;
-      transition:0.3s;
-      box-shadow:0 8px 20px rgba(0,0,0,0.2);
-    }
+/* BACKGROUND */
 
-    .btn:hover{
-      transform:scale(1.08);
-      background:#dff3ff;
-    }
+.bg{
 
-    textarea{
-      width:100%;
-      height:150px;
-      border:none;
-      border-radius:20px;
-      padding:20px;
-      margin-top:30px;
-      font-size:18px;
-      resize:none;
-      outline:none;
-      font-family:'Poppins',sans-serif;
-    }
+  position:absolute;
+  width:100%;
+  height:100%;
+  overflow:hidden;
+  z-index:0;
+}
 
-    .cake{
-      font-size:80px;
-      margin-bottom:20px;
-      animation: float 3s infinite;
-    }
+.float{
 
-    .gift-rain{
-      position:absolute;
-      top:-50px;
-      animation:fall linear forwards;
-    }
+  position:absolute;
+  animation:float 6s infinite ease-in-out;
+  opacity:0.9;
+  filter:drop-shadow(0 0 10px rgba(255,255,255,0.5));
+}
 
-    @keyframes fall{
-      to{
-        transform:translateY(110vh) rotate(360deg);
-      }
-    }
+@keyframes float{
 
-    .music-btn{
-      position:fixed;
-      top:20px;
-      right:20px;
-      z-index:999;
-      border:none;
-      background:white;
-      color:#0b3d91;
-      width:55px;
-      height:55px;
-      border-radius:50%;
-      font-size:22px;
-      cursor:pointer;
-      box-shadow:0 5px 15px rgba(0,0,0,0.2);
-    }
+  0%{
+    transform:translateY(0px) rotate(0deg);
+  }
 
-    @media(max-width:768px){
-      h1{
-        font-size:38px;
-      }
+  50%{
+    transform:translateY(-20px) rotate(8deg);
+  }
 
-      p{
-        font-size:22px;
-      }
+  100%{
+    transform:translateY(0px) rotate(0deg);
+  }
+}
 
-      .card{
-        padding:30px 20px;
-      }
-    }
+/* CARD */
 
-  </style>
+.container{
+
+  width:100%;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  padding:18px;
+  position:relative;
+  z-index:2;
+}
+
+.card{
+
+  width:100%;
+  max-width:760px;
+  min-height:480px;
+
+  background:rgba(255,255,255,0.14);
+
+  backdrop-filter: blur(16px);
+
+  border:1px solid rgba(255,255,255,0.18);
+
+  border-radius:32px;
+
+  padding:32px 24px;
+
+  text-align:center;
+
+  box-shadow:
+  0 10px 40px rgba(0,0,0,0.25),
+  inset 0 0 20px rgba(255,255,255,0.08);
+
+  display:none;
+
+  animation:fadeIn 0.6s ease;
+}
+
+.card.active{
+  display:block;
+}
+
+@keyframes fadeIn{
+
+  from{
+    opacity:0;
+    transform:scale(0.92);
+  }
+
+  to{
+    opacity:1;
+    transform:scale(1);
+  }
+}
+
+.icon{
+
+  font-size:72px;
+  margin-bottom:20px;
+
+  animation:float 3s infinite;
+}
+
+h1{
+
+  font-family:'Pacifico',cursive;
+
+  font-size:44px;
+
+  line-height:1.4;
+
+  margin-bottom:24px;
+
+  text-shadow:0 0 15px rgba(255,255,255,0.6);
+}
+
+p{
+
+  font-size:24px;
+
+  line-height:1.8;
+
+  font-weight:600;
+}
+
+.btn{
+
+  margin-top:38px;
+
+  padding:16px 34px;
+
+  border:none;
+
+  border-radius:50px;
+
+  background:white;
+
+  color:#0b3d91;
+
+  font-size:18px;
+
+  font-weight:700;
+
+  cursor:pointer;
+
+  transition:0.3s;
+
+  box-shadow:0 8px 20px rgba(0,0,0,0.2);
+}
+
+.btn:hover{
+
+  transform:scale(1.08);
+
+  background:#dff4ff;
+}
+
+textarea{
+
+  width:100%;
+
+  height:160px;
+
+  border:none;
+
+  border-radius:24px;
+
+  padding:20px;
+
+  margin-top:25px;
+
+  resize:none;
+
+  outline:none;
+
+  font-size:18px;
+
+  font-family:'Poppins',sans-serif;
+
+  color:#0b3d91;
+}
+
+/* MUSIC BUTTON */
+
+.music-btn{
+
+  position:fixed;
+
+  top:18px;
+  right:18px;
+
+  width:54px;
+  height:54px;
+
+  border:none;
+
+  border-radius:50%;
+
+  background:white;
+
+  color:#0b3d91;
+
+  font-size:22px;
+
+  cursor:pointer;
+
+  z-index:999;
+
+  box-shadow:0 6px 18px rgba(0,0,0,0.25);
+}
+
+/* GIFT RAIN */
+
+.gift{
+
+  position:absolute;
+
+  top:-50px;
+
+  z-index:99;
+
+  animation:fall linear forwards;
+}
+
+@keyframes fall{
+
+  to{
+    transform:translateY(120vh) rotate(360deg);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:768px){
+
+  .card{
+
+    min-height:430px;
+    padding:28px 20px;
+  }
+
+  h1{
+
+    font-size:34px;
+  }
+
+  p{
+
+    font-size:21px;
+  }
+
+  .btn{
+
+    width:100%;
+    font-size:17px;
+  }
+
+  .icon{
+
+    font-size:60px;
+  }
+
+  textarea{
+
+    height:140px;
+    font-size:16px;
+  }
+}
+
+</style>
+
 </head>
 
 <body>
 
-  <!-- NHẠC -->
-  <audio id="bgMusic" loop autoplay>
-    <source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
-  </audio>
+<!-- MUSIC -->
+<audio id="bgMusic" loop>
 
-  <button class="music-btn" onclick="toggleMusic()">🎵</button>
+<source src="https://cdn.pixabay.com/audio/2022/03/15/audio_c8c8a73467.mp3" type="audio/mp3">
 
-  <!-- DECOR -->
-  <div class="bg-deco">
-    <div class="floating" style="left:5%;top:10%;">🎂</div>
-    <div class="floating" style="left:15%;top:70%;animation-delay:1s;">🎁</div>
-    <div class="floating" style="left:80%;top:15%;animation-delay:2s;">🎈</div>
-    <div class="floating" style="left:75%;top:70%;animation-delay:1.5s;">🧁</div>
-    <div class="floating" style="left:45%;top:5%;animation-delay:0.5s;">✨</div>
-    <div class="floating" style="left:50%;top:80%;animation-delay:2.5s;">🍰</div>
-  </div>
+</audio>
 
-  <div class="container">
+<button class="music-btn" onclick="toggleMusic()">
+🎵
+</button>
 
-    <!-- PAGE 1 -->
-    <div class="card active">
-      <div class="cake">🎂</div>
-      <h1>Chúc mừng sinh nhật bạn Đoàn</h1>
-      <button class="btn" onclick="nextPage()">Tiếp tục 🎉</button>
-    </div>
+<!-- BACKGROUND -->
+<div class="bg">
 
-    <!-- PAGE 2 -->
-    <div class="card">
-      <div class="cake">🎁</div>
-      <p>Chúc bạn Đoàn tuổi mới nhiều thành công 💙</p>
-      <button class="btn" onclick="nextPage()">Tiếp tục 🎉</button>
-    </div>
+<div class="float" style="top:5%;left:5%;font-size:38px;">🎂</div>
 
-    <!-- PAGE 3 -->
-    <div class="card">
-      <div class="cake">🧁</div>
-      <p>Chúc bạn mãi luôn mlem và nuột nà ✨</p>
-      <button class="btn" onclick="nextPage()">Tiếp tục 🎉</button>
-    </div>
+<div class="float" style="top:20%;left:80%;font-size:40px;animation-delay:1s;">🎁</div>
 
-    <!-- PAGE 4 -->
-    <div class="card">
-      <div class="cake">💌</div>
-      <p>
-        Đã hơn một chúng mình không bên nhau nữa rồi nhưng mình luôn mong những điều tốt đẹp nhất đến với bạn 💙
-      </p>
-      <button class="btn" onclick="nextPage()">Tiếp tục 🎉</button>
-    </div>
+<div class="float" style="top:75%;left:10%;font-size:35px;animation-delay:2s;">🎈</div>
 
-    <!-- PAGE 5 -->
-    <div class="card">
-      <div class="cake">🌠</div>
-      <h1>Điều ước sinh nhật của bạn là gì?</h1>
+<div class="float" style="top:80%;left:75%;font-size:42px;animation-delay:1.5s;">🧁</div>
 
-      <textarea id="wishInput" placeholder="Nhập điều ước tại đây..."></textarea>
+<div class="float" style="top:50%;left:50%;font-size:30px;animation-delay:0.7s;">✨</div>
 
-      <button class="btn" onclick="submitWish()">Gửi điều ước ✨</button>
-    </div>
+</div>
 
-    <!-- PAGE 6 -->
-    <div class="card">
-      <div class="cake">🎆</div>
-      <p>
-        Ước mơ của bạn đã được ghi nhận và sẽ sớm thành hiện thực. 
-        Chúc bạn có một sinh nhật thật ý nghĩa bên những người thân yêu 💙
-      </p>
-    </div>
+<!-- CONTENT -->
+<div class="container">
 
-  </div>
+<!-- PAGE 1 -->
+<div class="card active">
 
-  <script>
+<div class="icon">🎂</div>
 
-    const pages = document.querySelectorAll('.card');
-    let currentPage = 0;
+<h1>Chúc mừng sinh nhật bạn Đoàn 💙</h1>
 
-    function nextPage(){
+<button class="btn" onclick="nextPage()">
+Tiếp tục 🎉
+</button>
 
-      pages[currentPage].classList.remove('active');
-      currentPage++;
+</div>
 
-      if(currentPage < pages.length){
-        pages[currentPage].classList.add('active');
+<!-- PAGE 2 -->
+<div class="card">
+
+<div class="icon">🎁</div>
+
+<p>
+Chúc bạn Đoàn tuổi mới nhiều thành công 💫
+</p>
+
+<button class="btn" onclick="nextPage()">
+Tiếp tục 🎉
+</button>
+
+</div>
+
+<!-- PAGE 3 -->
+<div class="card">
+
+<div class="icon">🧁</div>
+
+<p>
+Chúc bạn mãi luôn mlem và nuột nà ✨
+</p>
+
+<button class="btn" onclick="nextPage()">
+Tiếp tục 🎉
+</button>
+
+</div>
+
+<!-- PAGE 4 -->
+<div class="card">
+
+<div class="icon">💌</div>
+
+<p>
+Đã hơn một năm chúng mình không bên nhau nữa rồi nhưng mình luôn mong những điều tốt đẹp nhất đến với bạn 💙
+</p>
+
+<button class="btn" onclick="nextPage()">
+Tiếp tục 🎉
+</button>
+
+</div>
+
+<!-- PAGE 5 -->
+<div class="card">
+
+<div class="icon">🌠</div>
+
+<h1>Điều ước sinh nhật của bạn là gì?</h1>
+
+<textarea
+id="wishInput"
+placeholder="Viết điều ước của bạn tại đây... 💙">
+</textarea>
+
+<button class="btn" onclick="submitWish()">
+Gửi điều ước ✨
+</button>
+
+</div>
+
+<!-- PAGE 6 -->
+<div class="card">
+
+<div class="icon">🎆</div>
+
+<p>
+Ước mơ của bạn đã được ghi nhận và sẽ sớm thành hiện thực 💙
+<br><br>
+Chúc bạn có một sinh nhật thật ý nghĩa bên những người thân yêu 🎂
+</p>
+
+</div>
+
+</div>
+
+<script>
+
+const pages = document.querySelectorAll('.card');
+
+let currentPage = 0;
+
+/* NEXT PAGE */
+
+function nextPage(){
+
+  pages[currentPage].classList.remove('active');
+
+  currentPage++;
+
+  if(currentPage < pages.length){
+
+    pages[currentPage].classList.add('active');
+  }
+
+  firework();
+
+  giftRain();
+}
+
+/* PHÁO HOA */
+
+function firework(){
+
+  confetti({
+
+    particleCount:180,
+
+    spread:100,
+
+    origin:{ y:0.6 }
+  });
+
+  confetti({
+
+    particleCount:80,
+
+    angle:60,
+
+    spread:70,
+
+    origin:{ x:0 }
+  });
+
+  confetti({
+
+    particleCount:80,
+
+    angle:120,
+
+    spread:70,
+
+    origin:{ x:1 }
+  });
+}
+
+/* QUÀ RƠI */
+
+function giftRain(){
+
+  for(let i=0;i<18;i++){
+
+    const gift = document.createElement('div');
+
+    gift.classList.add('gift');
+
+    const items = ['🎁','🎂','🎈','✨','🧁','💙'];
+
+    gift.innerHTML =
+    items[Math.floor(Math.random()*items.length)];
+
+    gift.style.left =
+    Math.random()*100 + 'vw';
+
+    gift.style.fontSize =
+    (20 + Math.random()*26) + 'px';
+
+    gift.style.animationDuration =
+    (3 + Math.random()*2) + 's';
+
+    document.body.appendChild(gift);
+
+    setTimeout(()=>{
+
+      gift.remove();
+
+    },5000);
+  }
+}
+
+/* NHẠC */
+
+function toggleMusic(){
+
+  const music =
+  document.getElementById('bgMusic');
+
+  if(music.paused){
+
+    music.play();
+
+  }else{
+
+    music.pause();
+  }
+}
+
+/* AUTOPLAY MOBILE */
+
+document.body.addEventListener('click', function(){
+
+  const music =
+  document.getElementById('bgMusic');
+
+  music.play().catch(()=>{});
+
+}, { once:true });
+
+/* GỬI ĐIỀU ƯỚC */
+
+async function submitWish(){
+
+  const wish =
+  document.getElementById('wishInput').value;
+
+  if(!wish.trim()){
+
+    alert("Hãy nhập điều ước nhé ✨");
+
+    return;
+  }
+
+  try{
+
+    await fetch(
+
+      "https://formsubmit.co/ajax/thangviplinh@gmail.com",
+
+      {
+
+        method:"POST",
+
+        headers:{
+
+          'Content-Type':'application/json',
+
+          'Accept':'application/json'
+        },
+
+        body:JSON.stringify({
+
+          subject:"🎂 Điều ước sinh nhật mới",
+
+          message:wish
+        })
       }
 
-      firework();
-      giftRain();
-    }
+    );
 
-    function firework(){
-      confetti({
-        particleCount:180,
-        spread:120,
-        origin:{ y:0.6 }
-      });
-    }
+  }catch(error){
 
-    function giftRain(){
+    console.log(error);
+  }
 
-      for(let i=0;i<20;i++){
+  nextPage();
+}
 
-        const gift = document.createElement('div');
-        gift.classList.add('gift-rain');
-
-        const items = ['🎁','🎂','🎈','✨','🧁'];
-        gift.innerHTML = items[Math.floor(Math.random()*items.length)];
-
-        gift.style.left = Math.random()*100 + 'vw';
-        gift.style.fontSize = (25 + Math.random()*30) + 'px';
-        gift.style.animationDuration = (3 + Math.random()*3) + 's';
-
-        document.body.appendChild(gift);
-
-        setTimeout(()=>{
-          gift.remove();
-        },6000);
-      }
-    }
-
-    function toggleMusic(){
-
-      const music = document.getElementById('bgMusic');
-
-      if(music.paused){
-        music.play();
-      }else{
-        music.pause();
-      }
-    }
-
-    // GỬI ĐIỀU ƯỚC VỀ HOST
-    async function submitWish(){
-
-      const wish = document.getElementById('wishInput').value;
-
-      if(!wish.trim()){
-        alert("Hãy nhập điều ước nhé ✨");
-        return;
-      }
-
-      try{
-
-        // THAY URL NÀY THÀNH API CỦA HOST
-        await fetch("https://your-domain.com/save-wish",{
-          method:"POST",
-          headers:{
-            "Content-Type":"application/json"
-          },
-          body:JSON.stringify({
-            wish:wish
-          })
-        });
-
-      }catch(err){
-        console.log(err);
-      }
-
-      nextPage();
-    }
-
-    // autoplay music for mobile
-    document.body.addEventListener('click', function(){
-      document.getElementById('bgMusic').play();
-    }, { once:true });
-
-  </script>
+</script>
 
 </body>
 </html>
